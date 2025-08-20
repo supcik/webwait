@@ -16,8 +16,6 @@ import (
 
 var (
 	version = "dev"
-	commit  = "none"
-	date    = "unknown"
 )
 
 func wait(url_string string, timeout time.Duration, interval time.Duration) error {
