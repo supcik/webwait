@@ -6,6 +6,8 @@ package main
 
 import "github.com/supcik/webwait/cmd"
 
+var version = "dev"
+
 func main() {
-	cmd.Execute()
+	cmd.Execute(version)
 }
