@@ -14,6 +14,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
+
 func wait(url_string string, timeout time.Duration, interval time.Duration) error {
 	client := &http.Client{}
 	u, err := url.Parse(url_string)
@@ -73,6 +79,14 @@ var rootCmd = &cobra.Command{
 	},
 }
 
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "Print the version number of webwait",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Printf("webwait version %s\n", version)
+	},
+}
+
 func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
@@ -83,4 +97,5 @@ func Execute() {
 func init() {
 	rootCmd.Flags().StringP("timeout", "t", "1m", "Timeout duration for waiting")
 	rootCmd.Flags().StringP("interval", "i", "10s", "Minimum interval between checks")
+	rootCmd.AddCommand(versionCmd)
 }
