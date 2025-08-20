@@ -2,6 +2,12 @@
 
 A simple CLI tool to wait for a web server to become available.
 
+![GitHub Release](https://img.shields.io/github/v/release/supcik/webwait)
+[![build-and-release](https://github.com/supcik/webwait/actions/workflows/build-release.yml/badge.svg)](https://github.com/supcik/webwait/actions/workflows/build-release.yml)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/supcik/webwait)
+![Static Badge](https://img.shields.io/badge/Made_in-Switzerland_%2B-DA291C)
+
+
 ## Overview
 `webwait` repeatedly checks a given URL until it responds with HTTP 200 OK or a timeout is reached. This is useful for scripts and automation where you need to wait for a service to be up before proceeding.
 
