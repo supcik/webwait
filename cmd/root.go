@@ -14,6 +14,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var version = "dev"
+
 func wait(url_string string, timeout time.Duration, interval time.Duration) error {
 	client := &http.Client{}
 	u, err := url.Parse(url_string)
@@ -73,8 +75,7 @@ var rootCmd = &cobra.Command{
 	},
 }
 
-func Execute(version string) {
-	rootCmd.Version = version
+func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
@@ -82,6 +83,7 @@ func Execute(version string) {
 }
 
 func init() {
+	rootCmd.Version = version
 	rootCmd.Flags().StringP("timeout", "t", "1m", "Timeout duration for waiting")
 	rootCmd.Flags().StringP("interval", "i", "10s", "Minimum interval between checks")
 }
