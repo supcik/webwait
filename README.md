@@ -29,6 +29,21 @@ webwait http://localhost:8080/health -t 2m -i 5s
 
 Install using the binaries from the [releases page](https://github.com/supcik/webwait/releases)
 
+### Homebrew
+
+To install `webwait` using Homebrew, run the following command:
+
+```sh
+brew install supcik/tap/webwait
+```
+
+You can also add Jacques Supcik's _tap_ and then simply install `webwait`:
+
+```sh
+brew tap supcik/tap
+brew install webwait
+```
+
 ### Using `go install`
 
 To install `webwait` using `go install`, run the following command:

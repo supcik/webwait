@@ -7,24 +7,33 @@ package cmd
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"os"
 	"time"
 
 	"github.com/spf13/cobra"
 )
 
-func wait(url string, timeout time.Duration, interval time.Duration) error {
+func wait(url_string string, timeout time.Duration, interval time.Duration) error {
 	client := &http.Client{}
+	u, err := url.Parse(url_string)
+	if err != nil {
+		fmt.Printf("Invalid URL: %v\n", err)
+		return fmt.Errorf("invalid URL: %v", err)
+	}
+	if u.Scheme == "" {
+		u.Scheme = "http"
+	}
 	start := time.Now()
 	last := time.Now().Add(-interval)
+	fmt.Printf("Waiting for %s to become available...\n", u.String())
 	for time.Since(start) < timeout {
 		now := time.Now()
 		if now.Sub(last) < interval {
 			time.Sleep(interval - now.Sub(last))
 		}
 		last = time.Now()
-
-		resp, err := client.Get(url)
+		resp, err := client.Get(u.String())
 		if err != nil {
 			continue
 		}
@@ -34,10 +43,12 @@ func wait(url string, timeout time.Duration, interval time.Duration) error {
 		}
 
 		if resp.StatusCode == http.StatusOK {
+			fmt.Printf("Success! %s is now available.\n", u.String())
 			return nil
 		}
 	}
-	return fmt.Errorf("timed out waiting for %s to become available", url)
+	fmt.Printf("Timeout reached. %s is still not available.\n", u.String())
+	return fmt.Errorf("timed out waiting for %s to become available", u.String())
 }
 
 var rootCmd = &cobra.Command{
