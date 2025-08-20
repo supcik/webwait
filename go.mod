@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT OR Apache-2.0
 
-module webwait
+module github.com/supcik/webwait
 
 go 1.24.3
 

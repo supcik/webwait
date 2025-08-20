@@ -4,7 +4,7 @@
 
 package main
 
-import "webwait/cmd"
+import "github.com/supcik/webwait/cmd"
 
 func main() {
 	cmd.Execute()
