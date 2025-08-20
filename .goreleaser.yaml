@@ -51,3 +51,16 @@ changelog:
 
 release:
   mode: keep-existing
+
+homebrew_casks:
+  hooks:
+    post:
+      # replace foo with the actual binary name
+      install: |
+        if OS.mac?
+          system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/foo"]
+        end
+    repository:
+      owner: supcik
+      name: homebrew-tap
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}"

@@ -25,7 +25,21 @@ webwait http://localhost:8080/health -t 2m -i 5s
 
 ## Installation
 
-Install using the binaries from the [releases page](https://github.com/supcik/webwait/releases) or clone the repository and build from the source:
+### From Binaries
+
+Install using the binaries from the [releases page](https://github.com/supcik/webwait/releases)
+
+### Using `go install`
+
+To install `webwait` using `go install`, run the following command:
+
+```sh
+go install github.com/supcik/webwait@latest
+```
+
+### Build from Source
+
+If you prefer to build from source, ensure you have Go installed and run the following commands:
 
 ```sh
 git clone https://github.com/supcik/webwait.git
