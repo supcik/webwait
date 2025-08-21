@@ -70,7 +70,7 @@ go build -o webwait
 
 ## License
 
-This project is licensed under the MIT OR Apache-2.0 license. See the `LICENSES/` directory for details.
+This project is licensed under the MIT license. See the `LICENSES/` directory for details.
 
 ## Copyright
 
