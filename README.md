@@ -5,6 +5,7 @@ A simple CLI tool to wait for a web server to become available.
 ![GitHub Release](https://img.shields.io/github/v/release/supcik/webwait)
 [![build-and-release](https://github.com/supcik/webwait/actions/workflows/build-release.yml/badge.svg)](https://github.com/supcik/webwait/actions/workflows/build-release.yml)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/supcik/webwait)
+[![Go Reference](https://pkg.go.dev/badge/github.com/supcik/webwait.svg)](https://pkg.go.dev/github.com/supcik/webwait)
 ![Static Badge](https://img.shields.io/badge/Made_in-Switzerland_%2B-DA291C)
 
 
