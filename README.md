@@ -8,8 +8,8 @@ A simple CLI tool to wait for a web server to become available.
 [![Go Reference](https://pkg.go.dev/badge/github.com/supcik/webwait.svg)](https://pkg.go.dev/github.com/supcik/webwait)
 ![Static Badge](https://img.shields.io/badge/Made_in-Switzerland_%2B-DA291C)
 
-
 ## Overview
+
 `webwait` repeatedly checks a given URL until it responds with HTTP 200 OK or a timeout is reached. This is useful for scripts and automation where you need to wait for a service to be up before proceeding.
 
 ## Usage
@@ -19,13 +19,16 @@ webwait <url> [flags]
 ```
 
 ### Arguments
+
 - `<url>`: The URL to check (e.g., `http://localhost:8080/health`)
 
 ### Flags
+
 - `-t, --timeout <duration>`: Timeout duration for waiting (default: `1m`)
 - `-i, --interval <duration>`: Minimum interval between checks (default: `10s`)
 
 Example:
+
 ```sh
 webwait http://localhost:8080/health -t 2m -i 5s
 ```
