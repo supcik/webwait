@@ -26,7 +26,7 @@ universal_binaries:
   - replace: false
 
 archives:
-  - formats: ["tar.gz"]
+  - formats: ['tar.gz']
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_
@@ -36,7 +36,7 @@ archives:
       {{- if .Arm }}v{{ .Arm }}{{ end }}
     format_overrides:
       - goos: windows
-        formats: ["zip"]
+        formats: ['zip']
 
 nfpms:
   - maintainer: Jacques Supcik <jacques.supcik@hefr.ch>
@@ -52,8 +52,8 @@ changelog:
   sort: asc
   filters:
     exclude:
-      - "^docs:"
-      - "^test:"
+      - '^docs:'
+      - '^test:'
 
 release:
   mode: keep-existing
@@ -62,11 +62,11 @@ homebrew_casks:
   - name: webwait
     hooks:
       post:
-        install: |
-          if OS.mac?
-            system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/webwait"]
+        install_steps: |
+          on_macos do
+            run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{ .StagedPath }}/webwait"]
           end
     repository:
       owner: supcik
       name: homebrew-tap
-      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
+      token: '{{ .Env.TAP_GITHUB_TOKEN }}'
